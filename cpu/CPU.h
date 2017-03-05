@@ -12,6 +12,8 @@ class CPU {
     vector<uint8_t> ROM_bytes;
     vector<uint16_t> STACK;
     uint8_t * intRAM;
+    typedef int (CPU::*OPCODE)(uint8_t, uint8_t);
+    OPCODE OpcodeTable[255];
 
     // 8-bit registers
     uint8_t A, B, C, D, E, F, H, L;
@@ -45,6 +47,27 @@ class CPU {
     vector<uint8_t> fetchRom();
 
     int opcode(uint8_t, uint8_t, uint8_t);
+
+    // 8 - bit loads
+
+
+    // LD nn, n ----------------------------
+    int LDnnn_0x06(uint8_t, uint8_t);
+    int LDnnn_0x0e(uint8_t, uint8_t);
+    int LDnnn_0x16(uint8_t, uint8_t);
+    int LDnnn_0x1e(uint8_t, uint8_t);
+    int LDnnn_0x26(uint8_t, uint8_t);
+    int LDnnn_0x2e(uint8_t, uint8_t);
+
+    // LD r1, r2 ---------------------------
+    int LDr1r2_0x7f(uint8_t, uint8_t);
+    int LDr1r2_0x78(uint8_t, uint8_t);
+    int LDr1r2_0x79(uint8_t, uint8_t);
+    int LDr1r2_0x7a(uint8_t, uint8_t);
+    int LDr1r2_0x7b(uint8_t, uint8_t);
+    int LDr1r2_0x7c(uint8_t, uint8_t);
+    int LDr1r2_0x7d(uint8_t, uint8_t);
+
 
 
 };

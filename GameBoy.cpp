@@ -5,11 +5,21 @@
 
 using namespace std;
 
+uint8_t add(uint8_t a, uint8_t b) {
+  return a + b;
+}
+
 int main(int argc, char* argv[]) {
   // GPU * gpu = new GPU();
   CPU * cpu = new CPU(argv[1]);
 
+
+
+
   /*
+  uint8_t (*add_pointer)(uint8_t, uint8_t);
+  add_pointer = &add;
+  
   uint8_t test1 = 0x31;
   uint8_t test2 = 0x17;
   cout << "Test1: " << bitset<8>(test1) << endl;

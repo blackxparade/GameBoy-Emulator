@@ -1,4 +1,4 @@
-OBJS = GameBoy.o CPU.o GPU.o
+OBJS = GameBoy.o CPU.o Opcodes.o GPU.o 
 CC = g++
 DEBUG = -g
 C11 = -std=c++11
@@ -12,8 +12,11 @@ GB : $(OBJS)
 GameBoy.o : GameBoy.cpp render/GPU.h cpu/CPU.h
 	$(CC) $(CFLAGS) GameBoy.cpp
 
-CPU.o :cpu/CPU.h cpu/CPU.cpp
+CPU.o : cpu/CPU.h cpu/CPU.cpp
 	$(CC) $(CFLAGS) cpu/CPU.cpp
+
+Opcodes.o : cpu/CPU.h cpu/Opcodes.cpp
+	$(CC) $(CFLAGS) cpu/Opcodes.cpp
 
 GPU.o : render/GPU.h render/GPU.cpp
 	$(CC) $(CFLAGS) render/GPU.cpp

@@ -9,6 +9,7 @@ CPU::CPU(char* path) {
   this->path = path;
   cout << path << endl;
   ROM_bytes = fetchRom();
+  init();
 }
 
 vector<uint8_t> CPU::fetchRom() {
@@ -28,6 +29,23 @@ vector<uint8_t> CPU::fetchRom() {
 void CPU::init() {
   PC = 0x100; // initialize to $100
   SP = 0xfffe; // initialize to $FFFE
+
+  OpcodeTable[0x06] = &CPU::LDnnn_0x06;
+  OpcodeTable[0x0e] = &CPU::LDnnn_0x0e;
+  OpcodeTable[0x16] = &CPU::LDnnn_0x16;
+  OpcodeTable[0x1e] = &CPU::LDnnn_0x1e;
+  OpcodeTable[0x26] = &CPU::LDnnn_0x26;
+  OpcodeTable[0x2e] = &CPU::LDnnn_0x2e;
+
+  OpcodeTable[0x7f] = &CPU::LDr1r2_0x7f;
+  OpcodeTable[0x78] = &CPU::LDr1r2_0x78;
+  OpcodeTable[0x79] = &CPU::LDr1r2_0x79;
+  OpcodeTable[0x7a] = &CPU::LDr1r2_0x7a;
+  OpcodeTable[0x7b] = &CPU::LDr1r2_0x7b;
+  OpcodeTable[0x7c] = &CPU::LDr1r2_0x7c;
+  OpcodeTable[0x7d] = &CPU::LDr1r2_0x7d;
+
+
 }
 
 
