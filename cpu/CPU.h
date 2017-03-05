@@ -60,6 +60,7 @@ class CPU {
     int LDnnn_0x2e(uint8_t, uint8_t);
 
     // LD r1, r2 ---------------------------
+    // LD A, n
     int LDr1r2_0x7f(uint8_t, uint8_t);
     int LDr1r2_0x78(uint8_t, uint8_t);
     int LDr1r2_0x79(uint8_t, uint8_t);
@@ -67,8 +68,63 @@ class CPU {
     int LDr1r2_0x7b(uint8_t, uint8_t);
     int LDr1r2_0x7c(uint8_t, uint8_t);
     int LDr1r2_0x7d(uint8_t, uint8_t);
-
-
+    int LDr1r2_0x7e(uint8_t, uint8_t);
+    // LD B, n
+    int LDr1r2_0x40(uint8_t, uint8_t);
+    int LDr1r2_0x41(uint8_t, uint8_t);
+    int LDr1r2_0x42(uint8_t, uint8_t);
+    int LDr1r2_0x43(uint8_t, uint8_t);
+    int LDr1r2_0x44(uint8_t, uint8_t);
+    int LDr1r2_0x45(uint8_t, uint8_t);
+    int LDr1r2_0x46(uint8_t, uint8_t);
+    // LD C, n
+    int LDr1r2_0x48(uint8_t, uint8_t);
+    int LDr1r2_0x49(uint8_t, uint8_t);
+    int LDr1r2_0x4a(uint8_t, uint8_t);
+    int LDr1r2_0x4b(uint8_t, uint8_t);
+    int LDr1r2_0x4c(uint8_t, uint8_t);
+    int LDr1r2_0x4d(uint8_t, uint8_t);
+    int LDr1r2_0x4e(uint8_t, uint8_t);
+    // LD D, n
+    int LDr1r2_0x50(uint8_t, uint8_t);
+    int LDr1r2_0x51(uint8_t, uint8_t);
+    int LDr1r2_0x52(uint8_t, uint8_t);
+    int LDr1r2_0x53(uint8_t, uint8_t);
+    int LDr1r2_0x54(uint8_t, uint8_t);
+    int LDr1r2_0x55(uint8_t, uint8_t);
+    int LDr1r2_0x56(uint8_t, uint8_t);
+    // LD E, n
+    int LDr1r2_0x58(uint8_t, uint8_t);
+    int LDr1r2_0x59(uint8_t, uint8_t);
+    int LDr1r2_0x5a(uint8_t, uint8_t);
+    int LDr1r2_0x5b(uint8_t, uint8_t);
+    int LDr1r2_0x5c(uint8_t, uint8_t);
+    int LDr1r2_0x5d(uint8_t, uint8_t);
+    int LDr1r2_0x5e(uint8_t, uint8_t);
+    // LD H, n
+    int LDr1r2_0x60(uint8_t, uint8_t);
+    int LDr1r2_0x61(uint8_t, uint8_t);
+    int LDr1r2_0x62(uint8_t, uint8_t);
+    int LDr1r2_0x63(uint8_t, uint8_t);
+    int LDr1r2_0x64(uint8_t, uint8_t);
+    int LDr1r2_0x65(uint8_t, uint8_t);
+    int LDr1r2_0x66(uint8_t, uint8_t);
+    // LD L, n
+    int LDr1r2_0x68(uint8_t, uint8_t);
+    int LDr1r2_0x69(uint8_t, uint8_t);
+    int LDr1r2_0x6a(uint8_t, uint8_t);
+    int LDr1r2_0x6b(uint8_t, uint8_t);
+    int LDr1r2_0x6c(uint8_t, uint8_t);
+    int LDr1r2_0x6d(uint8_t, uint8_t);
+    int LDr1r2_0x6e(uint8_t, uint8_t);
+    // LD (HL), n
+    int LDr1r2_0x70(uint8_t, uint8_t);
+    int LDr1r2_0x71(uint8_t, uint8_t);
+    int LDr1r2_0x72(uint8_t, uint8_t);
+    int LDr1r2_0x73(uint8_t, uint8_t);
+    int LDr1r2_0x74(uint8_t, uint8_t);
+    int LDr1r2_0x75(uint8_t, uint8_t);
+    int LDr1r2_0x36(uint8_t, uint8_t);
 
 };
 #endif
