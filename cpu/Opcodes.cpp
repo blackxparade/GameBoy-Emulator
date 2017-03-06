@@ -328,3 +328,139 @@ int CPU::LDr1r2_0x36(uint8_t n, uint8_t nn) {
   intRAM[HL] = n;
   return 12;
 }
+
+int CPU::LDr1r2_0x0a(uint8_t n, uint8_t nn) {
+  uint16_t BC = (uint16_t)(B << 8) | C;
+  A = intRAM[BC];
+  return 8;
+}
+
+int CPU::LDr1r2_0x1a(uint8_t n, uint8_t nn) {
+  uint16_t DE = (uint16_t)(D << 8) | E;
+  A = intRAM[DE];
+  return 8;
+}
+
+int CPU::LDr1r2_0xfa(uint8_t n, uint8_t nn) {
+  A = intRAM[nn];
+  return 16;
+}
+
+int CPU::LDr1r2_0x3e(uint8_t n, uint8_t nn) {
+  A = n;
+  return 8;
+}
+
+int CPU::LDr1r2_0x47(uint8_t n, uint8_t nn) {
+  B = A;
+  return 4;
+}
+
+int CPU::LDr1r2_0x4f(uint8_t n, uint8_t nn) {
+  C = A;
+  return 4;
+}
+
+int CPU::LDr1r2_0x57(uint8_t n, uint8_t nn) {
+  D = A;
+  return 4;
+}
+
+int CPU::LDr1r2_0x5f(uint8_t n, uint8_t nn) {
+  E = A;
+  return 4;
+}
+
+int CPU::LDr1r2_0x67(uint8_t n, uint8_t nn) {
+  H = A;
+  return 4;
+}
+
+int CPU::LDr1r2_0x6f(uint8_t n, uint8_t nn) {
+  L = A;
+  return 4;
+}
+
+int CPU::LDr1r2_0x02(uint8_t n, uint8_t nn) {
+  uint16_t BC = (uint16_t)(B << 8) | C;
+  intRAM[BC] = A;
+  return 8;
+}
+
+int CPU::LDr1r2_0x12(uint8_t n, uint8_t nn) {
+  uint16_t DE = (uint16_t)(D << 8) | E;
+  intRAM[DE] = A;
+  return 8;
+}
+
+int CPU::LDr1r2_0x77(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  intRAM[HL] = A;
+  return 8;
+}
+
+int CPU::LDr1r2_0xea(uint8_t n, uint8_t nn) {
+  intRAM[(uint16_t)n] = A;
+  return 16;
+}
+
+int CPU::LDr1r2_0xf2(uint8_t n, uint8_t nn) {
+  A = intRAM[0xff00] + C;
+  return 8;
+}
+
+int CPU::LDr1r2_0xe2(uint8_t n, uint8_t nn) {
+  intRAM[intRAM[0xff00] + C] = A;
+  return 8;
+}
+
+
+
+
+
+
+int CPU::LDDr1r2_0x3a(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  A = intRAM[HL];
+  HL--;
+  H = HL >> 8;
+  L = HL | 0x00ff;
+  return 8;
+}
+
+int CPU::LDDr1r2_0x32(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  intRAM[HL] = A;
+  HL--;
+  H = HL >> 8;
+  L = HL | 0x00ff;
+  return 8;
+}
+
+int CPU::LDIr1r2_0x2a(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  A = intRAM[HL];
+  HL++;
+  H = HL >> 8;
+  L = HL | 0x00ff;
+  return 8;
+}
+
+int CPU::LDIr1r2_0x22(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  intRAM[HL] = A;
+  HL++;
+  H = HL >> 8;
+  L = HL | 0x00ff;
+  return 8;
+}
+
+int CPU::LDHr1r2_0xe0(uint8_t n, uint8_t nn) {
+  intRAM[0xff00 + n] = A;
+  return 12;
+}
+
+int CPU::LDHr1r2_0xf0(uint8_t n, uint8_t nn) {
+  A = intRAM[0xff00 + n];
+  return 12;
+}

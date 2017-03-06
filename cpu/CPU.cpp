@@ -102,6 +102,31 @@ void CPU::init() {
   OpcodeTable[0x75] = &CPU::LDr1r2_0x75;
   OpcodeTable[0x36] = &CPU::LDr1r2_0x36;
 
+  OpcodeTable[0x0a] = &CPU::LDr1r2_0x0a;
+  OpcodeTable[0x1a] = &CPU::LDr1r2_0x1a;
+  OpcodeTable[0xfa] = &CPU::LDr1r2_0xfa;
+  OpcodeTable[0x3e] = &CPU::LDr1r2_0x3e;
+
+  OpcodeTable[0x47] = &CPU::LDr1r2_0x47;
+  OpcodeTable[0x4f] = &CPU::LDr1r2_0x4f;
+  OpcodeTable[0x57] = &CPU::LDr1r2_0x57;
+  OpcodeTable[0x5f] = &CPU::LDr1r2_0x5f;
+  OpcodeTable[0x67] = &CPU::LDr1r2_0x67;
+  OpcodeTable[0x6f] = &CPU::LDr1r2_0x6f;
+  OpcodeTable[0x02] = &CPU::LDr1r2_0x02;
+  OpcodeTable[0x12] = &CPU::LDr1r2_0x12;
+  OpcodeTable[0x77] = &CPU::LDr1r2_0x77;
+  OpcodeTable[0xea] = &CPU::LDr1r2_0xea;
+  OpcodeTable[0xf2] = &CPU::LDr1r2_0xf2;
+  OpcodeTable[0xe2] = &CPU::LDr1r2_0xe2;
+
+  OpcodeTable[0x3a] = &CPU::LDDr1r2_0x3a;
+  OpcodeTable[0x32] = &CPU::LDDr1r2_0x32;
+  OpcodeTable[0x2a] = &CPU::LDIr1r2_0x2a;
+  OpcodeTable[0x22] = &CPU::LDIr1r2_0x22;
+  OpcodeTable[0xe0] = &CPU::LDHr1r2_0xe0;
+  OpcodeTable[0xf0] = &CPU::LDHr1r2_0xf0;
+
 }
 
 
