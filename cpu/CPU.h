@@ -153,5 +153,39 @@ class CPU {
 
 
 
+    // 16 - bit loads
+    int LDnnn_0x01(uint8_t, uint8_t);
+    int LDnnn_0x11(uint8_t, uint8_t);
+    int LDnnn_0x21(uint8_t, uint8_t);
+    int LDnnn_0x31(uint8_t, uint8_t);
+    int LDr1r2_0xf9(uint8_t, uint8_t);
+    int LDHLr1r2_0xf8(uint8_t, uint8_t);
+    int LDr1r2_0x08(uint8_t, uint8_t);
+
+    // PUSH nn
+    int PUSH_0xf5(uint8_t, uint8_t);
+    int PUSH_0xc5(uint8_t, uint8_t);
+    int PUSH_0xd5(uint8_t, uint8_t);
+    int PUSH_0xe5(uint8_t, uint8_t);
+    // POP nn
+    int POP_0xf1(uint8_t, uint8_t);
+    int POP_0xc1(uint8_t, uint8_t);
+    int POP_0xd1(uint8_t, uint8_t);
+    int POP_0xe1(uint8_t, uint8_t);
+
+
+    // 8 - bit ALU
+    int ADD_0x87(uint8_t, uint8_t);
+    int ADD_0x80(uint8_t, uint8_t);
+    int ADD_0x81(uint8_t, uint8_t);
+    int ADD_0x82(uint8_t, uint8_t);
+    int ADD_0x83(uint8_t, uint8_t);
+    int ADD_0x84(uint8_t, uint8_t);
+    int ADD_0x85(uint8_t, uint8_t);
+    int ADD_0x86(uint8_t, uint8_t);
+    int ADD_0xc6(uint8_t, uint8_t);
+
+
+
 };
 #endif

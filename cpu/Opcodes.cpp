@@ -414,11 +414,6 @@ int CPU::LDr1r2_0xe2(uint8_t n, uint8_t nn) {
   return 8;
 }
 
-
-
-
-
-
 int CPU::LDDr1r2_0x3a(uint8_t n, uint8_t nn) {
   uint16_t HL = (uint16_t)(H << 8) | L;
   A = intRAM[HL];
@@ -463,4 +458,196 @@ int CPU::LDHr1r2_0xe0(uint8_t n, uint8_t nn) {
 int CPU::LDHr1r2_0xf0(uint8_t n, uint8_t nn) {
   A = intRAM[0xff00 + n];
   return 12;
+}
+
+int CPU::LDnnn_0x01(uint8_t n, uint8_t nn) {
+  B = n;
+  C = nn;
+  return 12;
+}
+
+int CPU::LDnnn_0x11(uint8_t n, uint8_t nn) {
+  D = n;
+  E = nn;
+  return 12;
+}
+
+int CPU::LDnnn_0x21(uint8_t n, uint8_t nn) {
+  H = n;
+  L = nn;
+  return 12;
+}
+
+int CPU::LDnnn_0x31(uint8_t n, uint8_t nn) {
+  SP = (((uint16_t)n) << 8) | nn;
+  return 12;
+}
+
+int CPU::LDr1r2_0xf9(uint8_t n, uint8_t nn) {
+  SP = (uint16_t)(H << 8) | L;
+  return 8;
+}
+
+/// TODO: correct the carry bit settings!
+int CPU::LDHLr1r2_0xf8(uint8_t n, uint8_t nn) {
+  if (SP + n > UINT16_MAX) {
+    uint16_t value = 0xffff;
+    fill(FLAG, FLAG+8, 0);
+    FLAG[2] = FLAG[3] = 1;
+    H = value >> 8;
+    L = value & 0x00ff;
+  } else {
+    fill(FLAG, FLAG+8, 0);
+    uint16_t value = SP + n;
+    H = value >> 8;
+    L = value & 0x00ff;
+  }
+  return 12;
+}
+
+int CPU::LDr1r2_0x08(uint8_t n, uint8_t nn) {
+  intRAM[((((uint16_t)n) << 8) | nn)] = SP;
+  return 20;
+}
+
+int CPU::PUSH_0xf5(uint8_t n, uint8_t nn) {
+  STACK.push_back(((uint16_t)A << 8) | F);
+  SP-=2;
+  return 16;
+}
+
+int CPU::PUSH_0xc5(uint8_t n, uint8_t nn) {
+  STACK.push_back(((uint16_t)B << 8) | C);
+  SP-=2;
+  return 16;
+}
+
+int CPU::PUSH_0xd5(uint8_t n, uint8_t nn) {
+  STACK.push_back(((uint16_t)D << 8) | E);
+  SP-=2;
+  return 16;
+}
+
+int CPU::PUSH_0xe5(uint8_t n, uint8_t nn) {
+  STACK.push_back(((uint16_t)H << 8) | L);
+  SP-=2;
+  return 16;
+}
+
+int CPU::POP_0xf1(uint8_t n, uint8_t nn) {
+  uint16_t value = STACK[STACK.size()-1];
+  STACK.pop_back();
+  A = value >> 8;
+  F = value & 0x00ff;
+  SP+=2;
+  return 12;
+}
+
+int CPU::POP_0xc1(uint8_t n, uint8_t nn) {
+  uint16_t value = STACK[STACK.size()-1];
+  STACK.pop_back();
+  B = value >> 8;
+  C = value & 0x00ff;
+  SP+=2;
+  return 12;
+}
+
+int CPU::POP_0xd1(uint8_t n, uint8_t nn) {
+  uint16_t value = STACK[STACK.size()-1];
+  STACK.pop_back();
+  D = value >> 8;
+  E = value & 0x00ff;
+  SP+=2;
+  return 12;
+}
+
+int CPU::POP_0xe1(uint8_t n, uint8_t nn) {
+  uint16_t value = STACK[STACK.size()-1];
+  STACK.pop_back();
+  H = value >> 8;
+  L = value & 0x00ff;
+  SP+=2;
+  return 12;
+}
+
+int CPU::ADD_0x87(uint8_t n, uint8_t nn) {
+  A = A + A;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADD_0x80(uint8_t n, uint8_t nn) {
+  A = A + B;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADD_0x81(uint8_t n, uint8_t nn) {
+  A = A + C;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADD_0x82(uint8_t n, uint8_t nn) {
+  A = A + D;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADD_0x83(uint8_t n, uint8_t nn) {
+  A = A + E;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADD_0x84(uint8_t n, uint8_t nn) {
+  A = A + H;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADD_0x85(uint8_t n, uint8_t nn) {
+  A = A + L;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADD_0x86(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  A = A + intRAM[HL];
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 8;
+}
+
+int CPU::ADD_0xc6(uint8_t n, uint8_t nn) {
+  A = A + n;
+  if (A > 15) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 8;
 }
