@@ -572,7 +572,7 @@ int CPU::POP_0xe1(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0x87(uint8_t n, uint8_t nn) {
   A = A + A;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (A & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -581,7 +581,7 @@ int CPU::ADD_0x87(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0x80(uint8_t n, uint8_t nn) {
   A = A + B;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (B & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -590,7 +590,7 @@ int CPU::ADD_0x80(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0x81(uint8_t n, uint8_t nn) {
   A = A + C;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (C & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -599,7 +599,7 @@ int CPU::ADD_0x81(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0x82(uint8_t n, uint8_t nn) {
   A = A + D;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (D & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -608,7 +608,7 @@ int CPU::ADD_0x82(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0x83(uint8_t n, uint8_t nn) {
   A = A + E;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (E & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -617,7 +617,7 @@ int CPU::ADD_0x83(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0x84(uint8_t n, uint8_t nn) {
   A = A + H;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (H & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -626,7 +626,7 @@ int CPU::ADD_0x84(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0x85(uint8_t n, uint8_t nn) {
   A = A + L;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (L & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -636,7 +636,7 @@ int CPU::ADD_0x85(uint8_t n, uint8_t nn) {
 int CPU::ADD_0x86(uint8_t n, uint8_t nn) {
   uint16_t HL = (uint16_t)(H << 8) | L;
   A = A + intRAM[HL];
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (intRAM[HL] & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
@@ -645,7 +645,7 @@ int CPU::ADD_0x86(uint8_t n, uint8_t nn) {
 
 int CPU::ADD_0xc6(uint8_t n, uint8_t nn) {
   A = A + n;
-  if (A > 15) FLAG[2] = 1;
+  if ((((A & 0xf) + (n & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   if (A > 255) FLAG[3] = 1;
   if (A == 0) FLAG[0] = 1;
   FLAG[1] = 0;
