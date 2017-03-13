@@ -154,4 +154,34 @@ void CPU::init() {
   OpcodeTable[0x86] = &CPU::ADD_0x86;
   OpcodeTable[0xc6] = &CPU::ADD_0xc6;
 
+  OpcodeTable[0x8f] = &CPU::ADC_0x8f;
+  OpcodeTable[0x88] = &CPU::ADC_0x88;
+  OpcodeTable[0x89] = &CPU::ADC_0x89;
+  OpcodeTable[0x8a] = &CPU::ADC_0x8a;
+  OpcodeTable[0x8b] = &CPU::ADC_0x8b;
+  OpcodeTable[0x8c] = &CPU::ADC_0x8c;
+  OpcodeTable[0x8d] = &CPU::ADC_0x8d;
+  OpcodeTable[0x8e] = &CPU::ADC_0x8e;
+  OpcodeTable[0xce] = &CPU::ADC_0xce;
+
+  OpcodeTable[0xa7] = &CPU::AND_0xa7;
+  OpcodeTable[0xa0] = &CPU::AND_0xa0;
+  OpcodeTable[0xa1] = &CPU::AND_0xa1;
+  OpcodeTable[0xa2] = &CPU::AND_0xa2;
+  OpcodeTable[0xa3] = &CPU::AND_0xa3;
+  OpcodeTable[0xa4] = &CPU::AND_0xa4;
+  OpcodeTable[0xa5] = &CPU::AND_0xa5;
+  OpcodeTable[0xa6] = &CPU::AND_0xa6;
+  OpcodeTable[0xe6] = &CPU::AND_0xe6;
+
+  OpcodeTable[0xb7] = &CPU::OR_0xb7;
+  OpcodeTable[0xb0] = &CPU::OR_0xb0;
+  OpcodeTable[0xb1] = &CPU::OR_0xb1;
+  OpcodeTable[0xb2] = &CPU::OR_0xb2;
+  OpcodeTable[0xb3] = &CPU::OR_0xb3;
+  OpcodeTable[0xb4] = &CPU::OR_0xb4;
+  OpcodeTable[0xb5] = &CPU::OR_0xb5;
+  OpcodeTable[0xb6] = &CPU::OR_0xb6;
+  OpcodeTable[0xf6] = &CPU::OR_0xf6;
+
 }

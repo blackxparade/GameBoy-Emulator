@@ -651,3 +651,267 @@ int CPU::ADD_0xc6(uint8_t n, uint8_t nn) {
   FLAG[1] = 0;
   return 8;
 }
+
+int CPU::ADC_0x8f(uint8_t n, uint8_t nn) {
+  A = A + A;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((A+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADC_0x88(uint8_t n, uint8_t nn) {
+  A = A + B;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((B+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADC_0x89(uint8_t n, uint8_t nn) {
+  A = A + C;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((C+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADC_0x8a(uint8_t n, uint8_t nn) {
+  A = A + D;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((D+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADC_0x8b(uint8_t n, uint8_t nn) {
+  A = A + E;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((E+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADC_0x8c(uint8_t n, uint8_t nn) {
+  A = A + H;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((H+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADC_0x8d(uint8_t n, uint8_t nn) {
+  A = A + L;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((L+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 4;
+}
+
+int CPU::ADC_0x8e(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  A = A + intRAM[HL];
+  A += FLAG[3];
+  if ((((A & 0xf) + ((intRAM[HL]+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 8;
+}
+
+int CPU::ADC_0xce(uint8_t n, uint8_t nn) {
+  A = A + n;
+  A += FLAG[3];
+  if ((((A & 0xf) + ((n+FLAG[3]) & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
+  if (A > 255) FLAG[3] = 1;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  return 8;
+}
+
+int CPU::AND_0xa7(uint8_t n, uint8_t nn) {
+  A = A & A;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::AND_0xa0(uint8_t n, uint8_t nn) {
+  A = A & B;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::AND_0xa1(uint8_t n, uint8_t nn) {
+  A = A & C;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::AND_0xa2(uint8_t n, uint8_t nn) {
+  A = A & D;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::AND_0xa3(uint8_t n, uint8_t nn) {
+  A = A & E;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::AND_0xa4(uint8_t n, uint8_t nn) {
+  A = A & H;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::AND_0xa5(uint8_t n, uint8_t nn) {
+  A = A & L;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::AND_0xa6(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  A = A & intRAM[HL];
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::AND_0xe6(uint8_t n, uint8_t nn) {
+  A = A & n;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 1;
+  FLAG[3] = 0;
+  return 8;
+}
+
+
+
+
+
+
+
+
+
+
+int CPU::OR_0xb7(uint8_t n, uint8_t nn) {
+  A = A | A;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::OR_0xb0(uint8_t n, uint8_t nn) {
+  A = A | B;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::OR_0xb1(uint8_t n, uint8_t nn) {
+  A = A | C;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::OR_0xb2(uint8_t n, uint8_t nn) {
+  A = A | D;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::OR_0xb3(uint8_t n, uint8_t nn) {
+  A = A | E;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::OR_0xb4(uint8_t n, uint8_t nn) {
+  A = A | H;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::OR_0xb5(uint8_t n, uint8_t nn) {
+  A = A | L;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::OR_0xb6(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  A = A | intRAM[HL];
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::OR_0xf6(uint8_t n, uint8_t nn) {
+  A = A | n;
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}

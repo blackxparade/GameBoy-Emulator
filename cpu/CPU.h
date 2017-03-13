@@ -175,6 +175,8 @@ class CPU {
 
 
     // 8 - bit ALU
+
+    // ADD
     int ADD_0x87(uint8_t, uint8_t);
     int ADD_0x80(uint8_t, uint8_t);
     int ADD_0x81(uint8_t, uint8_t);
@@ -184,6 +186,38 @@ class CPU {
     int ADD_0x85(uint8_t, uint8_t);
     int ADD_0x86(uint8_t, uint8_t);
     int ADD_0xc6(uint8_t, uint8_t);
+    // ADC
+    int ADC_0x8f(uint8_t, uint8_t);
+    int ADC_0x88(uint8_t, uint8_t);
+    int ADC_0x89(uint8_t, uint8_t);
+    int ADC_0x8a(uint8_t, uint8_t);
+    int ADC_0x8b(uint8_t, uint8_t);
+    int ADC_0x8c(uint8_t, uint8_t);
+    int ADC_0x8d(uint8_t, uint8_t);
+    int ADC_0x8e(uint8_t, uint8_t);
+    int ADC_0xce(uint8_t, uint8_t);
+    // AND
+    int AND_0xa7(uint8_t, uint8_t);
+    int AND_0xa0(uint8_t, uint8_t);
+    int AND_0xa1(uint8_t, uint8_t);
+    int AND_0xa2(uint8_t, uint8_t);
+    int AND_0xa3(uint8_t, uint8_t);
+    int AND_0xa4(uint8_t, uint8_t);
+    int AND_0xa5(uint8_t, uint8_t);
+    int AND_0xa6(uint8_t, uint8_t);
+    int AND_0xe6(uint8_t, uint8_t);
+    // OR
+    int OR_0xb7(uint8_t, uint8_t);
+    int OR_0xb0(uint8_t, uint8_t);
+    int OR_0xb1(uint8_t, uint8_t);
+    int OR_0xb2(uint8_t, uint8_t);
+    int OR_0xb3(uint8_t, uint8_t);
+    int OR_0xb4(uint8_t, uint8_t);
+    int OR_0xb5(uint8_t, uint8_t);
+    int OR_0xb6(uint8_t, uint8_t);
+    int OR_0xf6(uint8_t, uint8_t);
+
+
 
 
 
