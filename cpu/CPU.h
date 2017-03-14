@@ -216,6 +216,16 @@ class CPU {
     int OR_0xb5(uint8_t, uint8_t);
     int OR_0xb6(uint8_t, uint8_t);
     int OR_0xf6(uint8_t, uint8_t);
+    // XOR
+    int XOR_0xaf(uint8_t, uint8_t);
+    int XOR_0xa8(uint8_t, uint8_t);
+    int XOR_0xa9(uint8_t, uint8_t);
+    int XOR_0xaa(uint8_t, uint8_t);
+    int XOR_0xab(uint8_t, uint8_t);
+    int XOR_0xac(uint8_t, uint8_t);
+    int XOR_0xad(uint8_t, uint8_t);
+    int XOR_0xae(uint8_t, uint8_t);
+    int XOR_0xee(uint8_t, uint8_t);
 
 
 
