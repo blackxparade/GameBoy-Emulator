@@ -35,7 +35,9 @@ void GPU::init() {
 
 void GPU::render() {
   int i = 0;
-  while (1) {
+
+  while (true) {
+    //cout << "SPACE ";
     pixels[i] = GREEN[rand() % 4];
     //pixels[i] = 0x7FFFD4;
     SDL_UpdateTexture(texture, NULL, pixels, CANVAS_WIDTH * sizeof(uint32_t));
@@ -50,6 +52,7 @@ void GPU::render() {
         || i>= CANVAS_WIDTH * CANVAS_HEIGHT)
           break;
   }
+
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_Quit();

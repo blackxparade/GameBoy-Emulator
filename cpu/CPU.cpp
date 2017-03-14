@@ -194,4 +194,14 @@ void CPU::init() {
   OpcodeTable[0xae] = &CPU::XOR_0xae;
   OpcodeTable[0xee] = &CPU::XOR_0xee;
 
+  OpcodeTable[0x3c] = &CPU::INC_0x3c;
+  OpcodeTable[0x04] = &CPU::INC_0x04;
+  OpcodeTable[0x0c] = &CPU::INC_0x0c;
+  OpcodeTable[0x14] = &CPU::INC_0x14;
+  OpcodeTable[0x1c] = &CPU::INC_0x1c;
+  OpcodeTable[0x24] = &CPU::INC_0x24;
+  OpcodeTable[0x2c] = &CPU::INC_0x2c;
+  OpcodeTable[0x34] = &CPU::INC_0x34;
+
+
 }

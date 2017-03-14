@@ -20,7 +20,6 @@ class GPU {
 
   void init();
   void render();
-
   public:
 
       const uint32_t GREEN[5] = {

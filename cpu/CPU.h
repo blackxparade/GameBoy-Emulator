@@ -226,6 +226,15 @@ class CPU {
     int XOR_0xad(uint8_t, uint8_t);
     int XOR_0xae(uint8_t, uint8_t);
     int XOR_0xee(uint8_t, uint8_t);
+    // INC
+    int INC_0x3c(uint8_t, uint8_t);
+    int INC_0x04(uint8_t, uint8_t);
+    int INC_0x0c(uint8_t, uint8_t);
+    int INC_0x14(uint8_t, uint8_t);
+    int INC_0x1c(uint8_t, uint8_t);
+    int INC_0x24(uint8_t, uint8_t);
+    int INC_0x2c(uint8_t, uint8_t);
+    int INC_0x34(uint8_t, uint8_t);
 
 
 

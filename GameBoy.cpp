@@ -6,7 +6,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-  // GPU * gpu = new GPU();
+  GPU * gpu = new GPU();
   CPU * cpu = new CPU(argv[1]);
 
 
