@@ -235,6 +235,11 @@ class CPU {
     int INC_0x24(uint8_t, uint8_t);
     int INC_0x2c(uint8_t, uint8_t);
     int INC_0x34(uint8_t, uint8_t);
+    // INC 16 - bit
+    int INC_0x03(uint8_t, uint8_t);
+    int INC_0x13(uint8_t, uint8_t);
+    int INC_0x23(uint8_t, uint8_t);
+    int INC_0x33(uint8_t, uint8_t);
 
 
 

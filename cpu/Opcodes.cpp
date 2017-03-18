@@ -1058,3 +1058,37 @@ int CPU::INC_0x34(uint8_t n, uint8_t nn) {
   FLAG[1] = 0;
   return 12;
 }
+
+
+
+
+
+
+int CPU::INC_0x03(uint8_t n, uint8_t nn) {
+  uint16_t BC = (uint16_t)(B << 8) | C;
+  BC++;
+  B = BC >> 8;
+  C = BC & 0x00ff;
+  return 8;
+}
+
+int CPU::INC_0x13(uint8_t n, uint8_t nn) {
+  uint16_t DE = (uint16_t)(D << 8) | E;
+  DE++;
+  D = DE >> 8;
+  E = DE & 0x00ff;
+  return 8;
+}
+
+int CPU::INC_0x23(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  HL++;
+  H = HL >> 8;
+  L = HL & 0x00ff;
+  return 8;
+}
+
+int CPU::INC_0x33(uint8_t n, uint8_t nn) {
+  SP++;
+  return 8;
+}

@@ -203,5 +203,10 @@ void CPU::init() {
   OpcodeTable[0x2c] = &CPU::INC_0x2c;
   OpcodeTable[0x34] = &CPU::INC_0x34;
 
+  OpcodeTable[0x03] = &CPU::INC_0x03;
+  OpcodeTable[0x13] = &CPU::INC_0x13;
+  OpcodeTable[0x23] = &CPU::INC_0x23;
+  OpcodeTable[0x33] = &CPU::INC_0x33;
+
 
 }
