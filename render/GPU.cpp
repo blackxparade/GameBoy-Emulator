@@ -1,5 +1,8 @@
 #include "GPU.h"
+#include <fstream>
 #include <iostream>
+#include <thread>
+#define NO_STDIO_REDIRECT
 using namespace std;
 
 GPU::GPU() {
@@ -14,6 +17,8 @@ void GPU::init() {
   if (SDL_Init(SDL_INIT_VIDEO) < 0)
     cout << "Error! " << SDL_GetError() << endl;
   else {
+    //freopen( "CON", "wt", stdout );
+    //freopen( "CON", "wt", stderr );
     SDL_CreateWindowAndRenderer(WINDOW_WIDTH,
                                 WINDOW_HEIGHT,
                                 SDL_WINDOW_RESIZABLE,
@@ -34,10 +39,11 @@ void GPU::init() {
 }
 
 void GPU::render() {
+  const Uint8 *state = SDL_GetKeyboardState(NULL);
   int i = 0;
-
   while (true) {
-    //cout << "SPACE ";
+    //cout << "yay " << endl;
+
     pixels[i] = GREEN[rand() % 4];
     //pixels[i] = 0x7FFFD4;
     SDL_UpdateTexture(texture, NULL, pixels, CANVAS_WIDTH * sizeof(uint32_t));
@@ -45,12 +51,15 @@ void GPU::render() {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_RenderPresent(renderer);
-    i++;
-    SDL_Delay(100);
 
-    if ((SDL_PollEvent(&event) && event.type == SDL_QUIT)
-        || i>= CANVAS_WIDTH * CANVAS_HEIGHT)
+    if ((SDL_PollEvent(&event) && (event.type == SDL_QUIT))
+        || (i>= CANVAS_WIDTH * CANVAS_HEIGHT)
+        || state[SDL_SCANCODE_ESCAPE])
           break;
+
+    if (state[SDL_SCANCODE_SPACE]) cout << "SPACE BABY!" << endl;
+    SDL_Delay(100);
+    i++;
   }
 
   SDL_DestroyRenderer(renderer);

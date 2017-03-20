@@ -1,6 +1,5 @@
 #ifndef GPU_H
 #define GPU_H
-
 #include <iostream>
 #include <cstdint>
 #include <SDL2/SDL.h>

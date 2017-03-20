@@ -1,8 +1,8 @@
-OBJS = GameBoy.o CPU.o Opcodes.o GPU.o 
+OBJS = GameBoy.o CPU.o Opcodes.o GPU.o
 CC = g++
 DEBUG = -g
 C11 = -std=c++11
-SDL = -lSDL2
+SDL = -lSDL2 -lpthread
 CFLAGS = $(C11) -Wall -c $(DEBUG)
 LFLAGS = $(C11) -Wall $(DEBUG)
 
