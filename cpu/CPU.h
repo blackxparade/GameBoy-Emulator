@@ -241,6 +241,20 @@ class CPU {
     int INC_0x23(uint8_t, uint8_t);
     int INC_0x33(uint8_t, uint8_t);
 
+    int DEC_0x0b(uint8_t, uint8_t);
+    int DEC_0x1b(uint8_t, uint8_t);
+    int DEC_0x2b(uint8_t, uint8_t);
+    int DEC_0x3b(uint8_t, uint8_t);
+
+    int SWAP_0xcb_37(uint8_t, uint8_t);
+    int SWAP_0xcb_30(uint8_t, uint8_t);
+    int SWAP_0xcb_31(uint8_t, uint8_t);
+    int SWAP_0xcb_32(uint8_t, uint8_t);
+    int SWAP_0xcb_33(uint8_t, uint8_t);
+    int SWAP_0xcb_34(uint8_t, uint8_t);
+    int SWAP_0xcb_35(uint8_t, uint8_t);
+    int SWAP_0xcb_36(uint8_t, uint8_t);
+
 
 
 

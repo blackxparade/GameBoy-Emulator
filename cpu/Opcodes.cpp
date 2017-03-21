@@ -1059,11 +1059,6 @@ int CPU::INC_0x34(uint8_t n, uint8_t nn) {
   return 12;
 }
 
-
-
-
-
-
 int CPU::INC_0x03(uint8_t n, uint8_t nn) {
   uint16_t BC = (uint16_t)(B << 8) | C;
   BC++;
@@ -1091,4 +1086,127 @@ int CPU::INC_0x23(uint8_t n, uint8_t nn) {
 int CPU::INC_0x33(uint8_t n, uint8_t nn) {
   SP++;
   return 8;
+}
+
+
+
+
+
+
+int CPU::DEC_0x0b(uint8_t n, uint8_t nn) {
+  uint16_t BC = (uint16_t)(B << 8) | C;
+  BC--;
+  B = BC >> 8;
+  C = BC & 0x00ff;
+  return 8;
+}
+
+int CPU::DEC_0x1b(uint8_t n, uint8_t nn) {
+  uint16_t DE = (uint16_t)(D << 8) | E;
+  DE--;
+  D = DE >> 8;
+  E = DE & 0x00ff;
+  return 8;
+}
+
+int CPU::DEC_0x2b(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  HL--;
+  H = HL >> 8;
+  L = HL & 0x00ff;
+  return 8;
+}
+
+int CPU::DEC_0x3b(uint8_t n, uint8_t nn) {
+  SP--;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_37(uint8_t n, uint8_t nn) {
+  uint8_t lower = A & 0x0f;
+  uint8_t upper = A & 0xf0;
+  A = (uint8_t)(upper << 4) | lower;
+  if (A == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_30(uint8_t n, uint8_t nn) {
+  uint8_t lower = B & 0x0f;
+  uint8_t upper = B & 0xf0;
+  B = (uint8_t)(upper << 4) | lower;
+  if (B == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_31(uint8_t n, uint8_t nn) {
+  uint8_t lower = C & 0x0f;
+  uint8_t upper = C & 0xf0;
+  C = (uint8_t)(upper << 4) | lower;
+  if (C == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_32(uint8_t n, uint8_t nn) {
+  uint8_t lower = D & 0x0f;
+  uint8_t upper = D & 0xf0;
+  D = (uint8_t)(upper << 4) | lower;
+  if (D == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_33(uint8_t n, uint8_t nn) {
+  uint8_t lower = E & 0x0f;
+  uint8_t upper = E & 0xf0;
+  E = (uint8_t)(upper << 4) | lower;
+  if (E == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_34(uint8_t n, uint8_t nn) {
+  uint8_t lower = H & 0x0f;
+  uint8_t upper = H & 0xf0;
+  H = (uint8_t)(upper << 4) | lower;
+  if (H == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_35(uint8_t n, uint8_t nn) {
+  uint8_t lower = L & 0x0f;
+  uint8_t upper = L & 0xf0;
+  L = (uint8_t)(upper << 4) | lower;
+  if (L == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 8;
+}
+
+int CPU::SWAP_0xcb_36(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  uint8_t lower = intRAM[HL] & 0x0f;
+  uint8_t upper = intRAM[HL] & 0xf0;
+  intRAM[HL] = (uint8_t)(upper << 4) | lower;
+  if (intRAM[HL] == 0) FLAG[0] = 0;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 0;
+  return 16;
 }

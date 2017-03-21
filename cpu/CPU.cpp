@@ -208,5 +208,14 @@ void CPU::init() {
   OpcodeTable[0x23] = &CPU::INC_0x23;
   OpcodeTable[0x33] = &CPU::INC_0x33;
 
+  OpcodeTable[0x0b] = &CPU::DEC_0x0b;
+  OpcodeTable[0x1b] = &CPU::DEC_0x1b;
+  OpcodeTable[0x2b] = &CPU::DEC_0x2b;
+  OpcodeTable[0x3b] = &CPU::DEC_0x3b;
+
+  // TODO: SWAP OPCODES?
+
+  
+
 
 }
