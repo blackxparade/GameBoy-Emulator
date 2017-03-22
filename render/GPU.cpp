@@ -7,6 +7,7 @@ using namespace std;
 
 GPU::GPU() {
   cout << "yay!" << endl;
+  keyb = new Keyboard(SDL_GetKeyboardState(NULL));
   init();
   render();
 }
@@ -39,7 +40,7 @@ void GPU::init() {
 }
 
 void GPU::render() {
-  const Uint8 *state = SDL_GetKeyboardState(NULL);
+  //const Uint8 *state = SDL_GetKeyboardState(NULL);
   int i = 0;
   while (true) {
     //cout << "yay " << endl;
@@ -53,11 +54,12 @@ void GPU::render() {
     SDL_RenderPresent(renderer);
 
     if ((SDL_PollEvent(&event) && (event.type == SDL_QUIT))
-        || (i>= CANVAS_WIDTH * CANVAS_HEIGHT)
-        || state[SDL_SCANCODE_ESCAPE])
+        || (i>= CANVAS_WIDTH * CANVAS_HEIGHT))
+        //|| state[SDL_SCANCODE_ESCAPE])
           break;
 
-    if (state[SDL_SCANCODE_SPACE]) cout << "SPACE BABY!" << endl;
+    //if (state[SDL_SCANCODE_SPACE]) cout << "SPACE BABY!" << endl;
+    keyb->printer();
     SDL_Delay(100);
     i++;
   }

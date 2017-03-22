@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdint>
 #include <SDL2/SDL.h>
+#include "../Keyboard.h"
 
 class GPU {
 
@@ -11,6 +12,7 @@ class GPU {
     const int WINDOW_HEIGHT = 512;
     const int CANVAS_WIDTH = 16;
     const int CANVAS_HEIGHT = 16;
+    Keyboard* keyb;
     SDL_Window* window;
     SDL_Event event;
     SDL_Renderer* renderer;
