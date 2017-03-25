@@ -54,12 +54,11 @@ void GPU::render() {
     SDL_RenderPresent(renderer);
 
     if ((SDL_PollEvent(&event) && (event.type == SDL_QUIT))
-        || (i>= CANVAS_WIDTH * CANVAS_HEIGHT))
-        //|| state[SDL_SCANCODE_ESCAPE])
+        || (i>= CANVAS_WIDTH * CANVAS_HEIGHT)
+        || (keyb->printer() == SDL_SCANCODE_ESCAPE))
           break;
 
     //if (state[SDL_SCANCODE_SPACE]) cout << "SPACE BABY!" << endl;
-    keyb->printer();
     SDL_Delay(100);
     i++;
   }
