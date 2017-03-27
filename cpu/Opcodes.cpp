@@ -1210,3 +1210,38 @@ int CPU::SWAP_0xcb_36(uint8_t n, uint8_t nn) {
   FLAG[3] = 0;
   return 16;
 }
+
+
+
+
+
+
+
+int CPU::CCF_0x3f(uint8_t n, uint8_t nn) {
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  if (FLAG[3] == 0) FLAG[3] = 1;
+  if (FLAG[3] == 1) FLAG[3] = 0;
+  return 4;
+}
+
+int CPU::SCF_0x37(uint8_t n, uint8_t nn) {
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = 1;
+  return 4;
+}
+
+int CPU::NOP_0x00(uint8_t n, uint8_t nn) {
+  return 4;
+}
+
+int CPU::HALT_0x76(uint8_t n, uint8_t nn) {
+  // TODO: stop the program until an interrupt occurs
+  return 4;
+}
+
+int CPU::STOP_0x10_00(uint8_t n, uint8_t nn) {
+  // TODO: halt CPU & LCD the program until a button pressed
+  return 4;
+}

@@ -215,7 +215,12 @@ void CPU::init() {
 
   // TODO: SWAP OPCODES?
 
-  
+  OpcodeTable[0x3f] = &CPU::CCF_0x3f;
+  OpcodeTable[0x37] = &CPU::SCF_0x37;
+  OpcodeTable[0x00] = &CPU::NOP_0x00;
+  OpcodeTable[0x76] = &CPU::HALT_0x76;
+  // TODO: STOP OPCODE? 
+
 
 
 }

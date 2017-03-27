@@ -257,6 +257,14 @@ class CPU {
 
 
 
+    int CCF_0x3f(uint8_t, uint8_t);
+    int SCF_0x37(uint8_t, uint8_t);
+    int NOP_0x00(uint8_t, uint8_t);
+    int HALT_0x76(uint8_t, uint8_t);
+    int STOP_0x10_00(uint8_t, uint8_t);
+
+
+
 
 
 };
