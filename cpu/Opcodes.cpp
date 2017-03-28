@@ -1,4 +1,5 @@
 #include "CPU.h"
+#include <bitset>
 
 int CPU::LDnnn_0x06(uint8_t n, uint8_t nn) {
   B = n;
@@ -1211,12 +1212,6 @@ int CPU::SWAP_0xcb_36(uint8_t n, uint8_t nn) {
   return 16;
 }
 
-
-
-
-
-
-
 int CPU::CCF_0x3f(uint8_t n, uint8_t nn) {
   FLAG[1] = 0;
   FLAG[2] = 0;
@@ -1243,5 +1238,37 @@ int CPU::HALT_0x76(uint8_t n, uint8_t nn) {
 
 int CPU::STOP_0x10_00(uint8_t n, uint8_t nn) {
   // TODO: halt CPU & LCD the program until a button pressed
+  return 4;
+}
+
+
+
+
+
+int CPU::RLCA_0x07(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(A);
+  s = b.to_string();
+  A = A << 1;
+
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 4;
+}
+
+int CPU::RLA_0x17(uint8_t n, uint8_t nn) {
+  // TODO: do this correctly
+  string s;
+  bitset<8> b(A);
+  s = b.to_string();
+  A = A << 1;
+  A = A | FLAG[3];
+
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
   return 4;
 }
