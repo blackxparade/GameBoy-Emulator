@@ -1272,3 +1272,34 @@ int CPU::RLA_0x17(uint8_t n, uint8_t nn) {
   FLAG[3] = (int)(s.at(0));
   return 4;
 }
+
+
+
+
+
+int CPU::RRCA_0x0f(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(A);
+  s = b.to_string();
+  A = A >> 1;
+
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 4;
+}
+
+int CPU::RRA_0x1f(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(A);
+  s = b.to_string();
+  A = A >> 1;
+  A = A | (uint8_t)(FLAG[3] << 3);
+
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 4;
+}

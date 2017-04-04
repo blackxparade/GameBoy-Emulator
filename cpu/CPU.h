@@ -268,6 +268,9 @@ class CPU {
     int RLCA_0x07(uint8_t, uint8_t);
     int RLA_0x17(uint8_t, uint8_t);
 
+    int RRCA_0x0f(uint8_t, uint8_t);
+    int RRA_0x1f(uint8_t, uint8_t);
+
 
 
 
