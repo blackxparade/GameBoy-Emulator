@@ -270,10 +270,17 @@ class CPU {
 
     int RRCA_0x0f(uint8_t, uint8_t);
     int RRA_0x1f(uint8_t, uint8_t);
+    
+    int RLC_0xcb_07(uint8_t, uint8_t);
+    int RLC_0xcb_00(uint8_t, uint8_t);
+    int RLC_0xcb_01(uint8_t, uint8_t);
+    int RLC_0xcb_02(uint8_t, uint8_t);    
+    int RLC_0xcb_03(uint8_t, uint8_t);   
+    int RLC_0xcb_04(uint8_t, uint8_t);
+    int RLC_0xcb_05(uint8_t, uint8_t);
+    int RLC_0xcb_06(uint8_t, uint8_t);
 
-
-
-
+    
 
 };
 #endif
