@@ -279,7 +279,14 @@ class CPU {
     int RLC_0xcb_04(uint8_t, uint8_t);
     int RLC_0xcb_05(uint8_t, uint8_t);
     int RLC_0xcb_06(uint8_t, uint8_t);
-
+    int RL_0xcb_17(uint8_t, uint8_t);
+    int RL_0xcb_10(uint8_t, uint8_t);
+    int RL_0xcb_11(uint8_t, uint8_t);
+    int RL_0xcb_12(uint8_t, uint8_t);
+    int RL_0xcb_13(uint8_t, uint8_t);
+    int RL_0xcb_14(uint8_t, uint8_t);
+    int RL_0xcb_15(uint8_t, uint8_t);
+    int RL_0xcb_16(uint8_t, uint8_t);
     
 
 };
