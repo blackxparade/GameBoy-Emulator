@@ -990,11 +990,6 @@ int CPU::XOR_0xee(uint8_t n, uint8_t nn) {
   return 8;
 }
 
-
-
-
-
-
 int CPU::INC_0x3c(uint8_t n, uint8_t nn) {
   if ((((A & 0xf) + (1 & 0xf)) & 0x10) == 0x10) FLAG[2] = 1;
   A++;
@@ -1088,11 +1083,6 @@ int CPU::INC_0x33(uint8_t n, uint8_t nn) {
   SP++;
   return 8;
 }
-
-
-
-
-
 
 int CPU::DEC_0x0b(uint8_t n, uint8_t nn) {
   uint16_t BC = (uint16_t)(B << 8) | C;
@@ -1241,10 +1231,6 @@ int CPU::STOP_0x10_00(uint8_t n, uint8_t nn) {
   return 4;
 }
 
-
-
-
-
 int CPU::RLCA_0x07(uint8_t n, uint8_t nn) {
   string s;
   bitset<8> b(A);
@@ -1303,14 +1289,6 @@ int CPU::RRA_0x1f(uint8_t n, uint8_t nn) {
   FLAG[3] = (int)(s.at(0));
   return 4;
 }
-
-
-
-
-
-
-
-
 
 int CPU::RLC_0xcb_07(uint8_t n, uint8_t nn) {
   string s;
@@ -1416,12 +1394,6 @@ int CPU::RLC_0xcb_06(uint8_t n, uint8_t nn) {
   FLAG[3] = (int)(s.at(7));
   return 16;
 }
-
-
-
-
-
-
 
 int CPU::RL_0xcb_17(uint8_t n, uint8_t nn) {
   string s;
@@ -1533,5 +1505,247 @@ int CPU::RL_0xcb_16(uint8_t n, uint8_t nn) {
   FLAG[1] = 0;
   FLAG[2] = 0;
   FLAG[3] = (int)(s.at(7));
+  return 16;
+}
+
+
+
+
+
+
+int CPU::RRC_0xcb_0f(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(A);
+  s = b.to_string();
+  A = A >> 1;
+
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RRC_0xcb_08(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(B);
+  s = b.to_string();
+  B = B >> 1;
+
+  if (B == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RRC_0xcb_09(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(C);
+  s = b.to_string();
+  C = C >> 1;
+
+  if (C == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RRC_0xcb_0a(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(D);
+  s = b.to_string();
+  D = D >> 1;
+
+  if (D == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RRC_0xcb_0b(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(E);
+  s = b.to_string();
+  E = E >> 1;
+
+  if (E == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RRC_0xcb_0c(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(H);
+  s = b.to_string();
+  H = H >> 1;
+
+  if (H == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RRC_0xcb_0d(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(L);
+  s = b.to_string();
+  L = L >> 1;
+
+  if (L == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RRC_0xcb_0e(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  string s;
+  bitset<8> b(intRAM[HL]);
+  s = b.to_string();
+  intRAM[HL] = intRAM[HL] >> 1;
+
+  if (intRAM[HL] == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 16;
+}
+
+
+
+
+int CPU::RR_0xcb_1f(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(A);
+  s = b.to_string();
+  A = A >> 1;
+  uint8_t higher = FLAG[3];
+  higher = higher << 7;
+  A = A | higher;
+
+  if (A == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RR_0xcb_18(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(B);
+  s = b.to_string();
+  B = B >> 1;
+  uint8_t higher = FLAG[3];
+  higher = higher << 7;
+  B = B | higher;
+
+  if (B == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RR_0xcb_19(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(C);
+  s = b.to_string();
+  C = C >> 1;
+  uint8_t higher = FLAG[3];
+  higher = higher << 7;
+  C = C | higher;
+
+  if (C == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RR_0xcb_1a(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(D);
+  s = b.to_string();
+  D = D >> 1;
+  uint8_t higher = FLAG[3];
+  higher = higher << 7;
+  D = D | higher;
+
+  if (D == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RR_0xcb_1b(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(E);
+  s = b.to_string();
+  E = E >> 1;
+  uint8_t higher = FLAG[3];
+  higher = higher << 7;
+  E = E | higher;
+
+  if (E == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RR_0xcb_1c(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(H);
+  s = b.to_string();
+  H = H >> 1;
+  uint8_t higher = FLAG[3];
+  higher = higher << 7;
+  H = H | higher;
+
+  if (H == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RR_0xcb_1d(uint8_t n, uint8_t nn) {
+  string s;
+  bitset<8> b(L);
+  s = b.to_string();
+  L = L >> 1;
+  uint8_t higher = FLAG[3];
+  higher = higher << 7;
+  L = L | higher;
+
+  if (L == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
+  return 8;
+}
+
+int CPU::RR_0xcb_1e(uint8_t n, uint8_t nn) {
+  uint16_t HL = (uint16_t)(H << 8) | L;
+  string s;
+  bitset<8> b(intRAM[HL]);
+  s = b.to_string();
+  intRAM[HL] = intRAM[HL] >> 1;
+  uint8_t higher = FLAG[3];
+  intRAM[HL] = intRAM[HL] << 7;
+  intRAM[HL] = intRAM[HL] | higher;
+
+  if (intRAM[HL] == 0) FLAG[0] = 1;
+  FLAG[1] = 0;
+  FLAG[2] = 0;
+  FLAG[3] = (int)(s.at(0));
   return 16;
 }

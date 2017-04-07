@@ -287,6 +287,22 @@ class CPU {
     int RL_0xcb_14(uint8_t, uint8_t);
     int RL_0xcb_15(uint8_t, uint8_t);
     int RL_0xcb_16(uint8_t, uint8_t);
+    int RRC_0xcb_0f(uint8_t, uint8_t);
+    int RRC_0xcb_08(uint8_t, uint8_t);
+    int RRC_0xcb_09(uint8_t, uint8_t);
+    int RRC_0xcb_0a(uint8_t, uint8_t);
+    int RRC_0xcb_0b(uint8_t, uint8_t);
+    int RRC_0xcb_0c(uint8_t, uint8_t);
+    int RRC_0xcb_0d(uint8_t, uint8_t);
+    int RRC_0xcb_0e(uint8_t, uint8_t);
+    int RR_0xcb_1f(uint8_t, uint8_t);
+    int RR_0xcb_18(uint8_t, uint8_t);
+    int RR_0xcb_19(uint8_t, uint8_t);
+    int RR_0xcb_1a(uint8_t, uint8_t);
+    int RR_0xcb_1b(uint8_t, uint8_t);
+    int RR_0xcb_1c(uint8_t, uint8_t);
+    int RR_0xcb_1d(uint8_t, uint8_t);
+    int RR_0xcb_1e(uint8_t, uint8_t);
     
 
 };
